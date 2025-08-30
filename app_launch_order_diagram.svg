@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1900" viewBox="0 0 1400 1900">
+  <defs>
+    <style>
+      .title{font:700 28px -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; fill:#1a472a}
+      .section{font:600 18px -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; fill:#1a472a}
+      .boxText{font:500 14px -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; fill:#0b0b0b}
+      .mvvmText{font:600 13px -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; fill:#2d5016}
+      .box{fill:#ffffff; stroke:#34a853; stroke-width:2; rx:10; ry:10}
+      .mvvmBox{fill:#f8fff8; stroke:#34a853; stroke-width:2.5; rx:12; ry:12}
+      .muted{fill:#f0f8f0}
+      .arrow{stroke:#666; stroke-width:2; marker-end:url(#arrowHead)}
+      .arrowStrong{stroke:#34a853; stroke-width:2.5; marker-end:url(#arrowHeadStrong)}
+      .mvvmArrow{stroke:#2d5016; stroke-width:3; marker-end:url(#arrowHeadMVVM)}
+    </style>
+    <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+    <marker id="arrowHeadStrong" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34a853"/>
+    </marker>
+    <marker id="arrowHeadMVVM" markerWidth="12" markerHeight="8" refX="12" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#2d5016"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="1900" fill="#fafffe"/>
+  <text x="700" y="50" text-anchor="middle" class="title">iOS App Launch Flow — MVVM Architecture</text>
+
+  <!-- Sections -->
+  <text x="150" y="100" class="section">Startup</text>
+  <text x="650" y="100" class="section">MVVM Setup & Binding</text>
+  <text x="1100" y="100" class="section">MVVM Interactions</text>
+
+  <!-- Column positions and sizes -->
+  <!-- Box size: w=360, h=60; vertical gap=26 -->
+
+  <!-- Startup column (left) -->
+  <g id="startup" transform="translate(20,120)">
+    <rect class="box muted" x="0" y="0" width="360" height="60"/>
+    <text class="boxText" x="14" y="24">
+      <tspan>@main AppDelegate</tspan>
+      <tspan x="14" dy="20">Application delegate instance created</tspan>
+    </text>
+
+    <rect class="box" x="0" y="86" width="360" height="60"/>
+    <text class="boxText" x="14" y="110">
+      <tspan>AppDelegate.application(_:didFinishLaunchingWithOptions:)</tspan>
+      <tspan x="14" dy="20">First app logic entry</tspan>
+    </text>
+
+    <rect class="box" x="0" y="172" width="360" height="60"/>
+    <text class="boxText" x="14" y="110">
+      <tspan>AppDelegate.application(_:configurationForConnecting:)</tspan>
+      <tspan x="14" dy="20">Returns "Default Configuration"</tspan>
+    </text>
+
+    <rect class="box" x="0" y="258" width="360" height="60"/>
+    <text class="boxText" x="14" y="282">
+      <tspan>SceneDelegate.scene(_:willConnectTo:options:)</tspan>
+      <tspan x="14" dy="20">Main.storyboard auto-loaded (Info.plist)</tspan>
+    </text>
+
+    <rect class="box" x="0" y="344" width="360" height="60"/>
+    <text class="boxText" x="14" y="368">
+      <tspan>Main.storyboard → ViewController</tspan>
+      <tspan x="14" dy="20">Initial VC instantiated</tspan>
+    </text>
+
+    <rect class="box" x="0" y="430" width="360" height="60"/>
+    <text class="boxText" x="14" y="454">
+      <tspan>ViewController.viewDidLoad()</tspan>
+      <tspan x="14" dy="20">Setup welcome screen</tspan>
+    </text>
+
+    <rect class="box" x="0" y="516" width="360" height="60"/>
+    <text class="boxText" x="14" y="540">
+      <tspan>ViewController.viewWillAppear/DidAppear</tspan>
+    </text>
+
+    <rect class="box" x="0" y="602" width="360" height="60"/>
+    <text class="boxText" x="14" y="626">
+      <tspan>SceneDelegate.sceneDidBecomeActive(_:)</tspan>
+    </text>
+
+    <!-- Arrows -->
+    <line class="arrow" x1="180" y1="60" x2="180" y2="86"/>
+    <line class="arrow" x1="180" y1="146" x2="180" y2="172"/>
+    <line class="arrow" x1="180" y1="232" x2="180" y2="258"/>
+    <line class="arrow" x1="180" y1="318" x2="180" y2="344"/>
+    <line class="arrow" x1="180" y1="404" x2="180" y2="430"/>
+    <line class="arrow" x1="180" y1="490" x2="180" y2="516"/>
+    <line class="arrow" x1="180" y1="576" x2="180" y2="602"/>
+  </g>
+
+  <!-- MVVM Setup & Binding column (middle) -->
+  <g id="mvvmSetup" transform="translate(520,120)">
+    <rect class="box muted" x="0" y="0" width="360" height="60"/>
+    <text class="boxText" x="14" y="24">
+      <tspan>User taps "Get Started"</tspan>
+      <tspan x="14" dy="20">getStartedTapped(_:)</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="86" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="110">
+      <tspan>setupMVVMArchitecture() 🧠</tspan>
+      <tspan x="14" dy="20">Instantiate NotesListVC + ViewModel</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="172" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="196">
+      <tspan>NotesListViewController.viewDidLoad()</tspan>
+      <tspan x="14" dy="20">setupView() • setupViewModel() 🧠</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="258" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="282">
+      <tspan>NotesListViewModel.init(repository:) 🧠</tspan>
+      <tspan x="14" dy="20">Repository → CoreDataManager.shared</tspan>
+    </text>
+
+    <rect class="box" x="0" y="344" width="360" height="60"/>
+    <text class="boxText" x="14" y="368">
+      <tspan>CoreDataManager init</tspan>
+      <tspan x="14" dy="20">loadPersistentStores • seed sample if empty</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="430" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="454">
+      <tspan>setupBindings() 🔗</tspan>
+      <tspan x="14" dy="20">Bind ViewModel.notes → UI updates</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="516" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="540">
+      <tspan>ViewModel.loadNotes() 🧠</tspan>
+      <tspan x="14" dy="20">Repository.fetchAllNotes() → Observable.bind</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="602" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="626">
+      <tspan>Reactive UI Update 🔗</tspan>
+      <tspan x="14" dy="20">Data binding → tableView.reloadData()</tspan>
+    </text>
+
+    <!-- Arrows -->
+    <line class="arrowStrong" x1="180" y1="60" x2="180" y2="86"/>
+    <line class="mvvmArrow" x1="180" y1="146" x2="180" y2="172"/>
+    <line class="mvvmArrow" x1="180" y1="232" x2="180" y2="258"/>
+    <line class="arrow" x1="180" y1="318" x2="180" y2="344"/>
+    <line class="mvvmArrow" x1="180" y1="404" x2="180" y2="430"/>
+    <line class="mvvmArrow" x1="180" y1="490" x2="180" y2="516"/>
+    <line class="mvvmArrow" x1="180" y1="576" x2="180" y2="602"/>
+  </g>
+
+  <!-- MVVM Interactions (right) -->
+  <g id="mvvmInteractions" transform="translate(980,120)">
+    <rect class="mvvmBox" x="0" y="0" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="24">
+      <tspan>Add (+) → ViewModel.addNewNote() 🧠</tspan>
+      <tspan x="14" dy="20">ViewModel handles navigation logic</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="86" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="110">
+      <tspan>Create NoteDetailVC + ViewModel 🧠</tspan>
+      <tspan x="14" dy="20">Dependency injection pattern</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="172" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="196">
+      <tspan>NoteDetailVC.setupBindings() 🔗</tspan>
+      <tspan x="14" dy="20">Bind title, content, loading, errors</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="258" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="282">
+      <tspan>Save → ViewModel.saveNote() 🧠</tspan>
+      <tspan x="14" dy="20">Validation + Repository coordination</tspan>
+    </text>
+
+    <rect class="box" x="0" y="344" width="360" height="60"/>
+    <text class="boxText" x="14" y="368">
+      <tspan>Repository.createNote()</tspan>
+      <tspan x="14" dy="20">CoreDataManager.saveContext()</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="430" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="454">
+      <tspan>Reactive List Update 🔗</tspan>
+      <tspan x="14" dy="20">ViewModel.notes updates → UI refreshes</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="516" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="540">
+      <tspan>Delete → ViewModel.deleteNote() 🧠</tspan>
+      <tspan x="14" dy="20">Repository.delete → Observable update</tspan>
+    </text>
+
+    <rect class="mvvmBox" x="0" y="602" width="360" height="60"/>
+    <text class="mvvmText" x="14" y="626">
+      <tspan>Select → ViewModel.selectNote() 🧠</tspan>
+      <tspan x="14" dy="20">Navigation + data preparation</tspan>
+    </text>
+
+    <rect class="box" x="0" y="688" width="360" height="60"/>
+    <text class="boxText" x="14" y="712">
+      <tspan>Background</tspan>
+      <tspan x="14" dy="20">sceneDidEnterBackground → saveContext</tspan>
+    </text>
+
+    <rect class="box" x="0" y="774" width="360" height="60"/>
+    <text class="boxText" x="14" y="798">
+      <tspan>Terminate</tspan>
+      <tspan x="14" dy="20">applicationWillTerminate → saveContext</tspan>
+    </text>
+
+    <!-- Arrows -->
+    <line class="mvvmArrow" x1="180" y1="60" x2="180" y2="86"/>
+    <line class="mvvmArrow" x1="180" y1="146" x2="180" y2="172"/>
+    <line class="mvvmArrow" x1="180" y1="232" x2="180" y2="258"/>
+    <line class="arrow" x1="180" y1="318" x2="180" y2="344"/>
+    <line class="mvvmArrow" x1="180" y1="404" x2="180" y2="430"/>
+    <line class="mvvmArrow" x1="180" y1="490" x2="180" y2="516"/>
+    <line class="mvvmArrow" x1="180" y1="576" x2="180" y2="602"/>
+    <line class="arrow" x1="180" y1="648" x2="180" y2="688"/>
+    <line class="arrow" x1="180" y1="748" x2="180" y2="774"/>
+  </g>
+
+  <!-- Cross reference arrows -->
+  <line class="arrowStrong" x1="380" y1="200" x2="520" y2="140"/>
+  <line class="mvvmArrow" x1="880" y1="620" x2="980" y2="480"/>
+
+  <!-- MVVM Legend -->
+  <g id="legend" transform="translate(50,1550)">
+    <rect class="box" x="0" y="0" width="1300" height="180" fill="#f8fff8" stroke="#34a853"/>
+    <text class="section" x="20" y="30">MVVM Architecture Legend</text>
+    
+    <rect class="mvvmBox" x="20" y="50" width="40" height="20"/>
+    <text class="mvvmText" x="70" y="65">ViewModel Layer 🧠 - Business logic, state management, data transformation</text>
+    
+    <rect class="box" x="20" y="80" width="40" height="20"/>
+    <text class="boxText" x="70" y="95">Model Layer - Data persistence, Core Data operations</text>
+    
+    <text class="mvvmText" x="70" y="125">🔗 Reactive Data Binding - Observable pattern for automatic UI updates</text>
+    
+    <text class="boxText" x="20" y="155">Key MVVM Benefits: Reactive UI • Testable ViewModels • Clean Separation • Repository Pattern</text>
+  </g>
+
+  <!-- Data Flow Diagram -->
+  <g id="dataFlow" transform="translate(450,1400)">
+    <text class="section" x="0" y="0">MVVM Data Flow Pattern</text>
+    
+    <rect class="box" x="0" y="20" width="120" height="40"/>
+    <text class="boxText" x="10" y="35">User Action</text>
+    <text class="boxText" x="20" y="50">View</text>
+    
+    <rect class="mvvmBox" x="150" y="20" width="120" height="40"/>
+    <text class="mvvmText" x="170" y="35">ViewModel</text>
+    <text class="mvvmText" x="185" y="50">🧠</text>
+    
+    <rect class="box" x="300" y="20" width="120" height="40"/>
+    <text class="boxText" x="320" y="35">Repository</text>
+    <text class="boxText" x="330" y="50">Model</text>
+    
+    <line class="mvvmArrow" x1="120" y1="40" x2="150" y2="40"/>
+    <line class="arrow" x1="270" y1="40" x2="300" y2="40"/>
+    <line class="mvvmArrow" x1="300" y1="50" x2="270" y2="50"/>
+    <line class="mvvmArrow" x1="150" y1="50" x2="120" y2="50"/>
+    
+    <text class="mvvmText" x="130" y="15">bind</text>
+    <text class="boxText" x="275" y="15">data</text>
+    <text class="mvvmText" x="200" y="75">🔗 Reactive Updates</text>
+  </g>
+
+</svg>

@@ -1,0 +1,159 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with subtle pattern -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f0f4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e6f0ff;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Layer gradients (consistent with MVC style) -->
+    <linearGradient id="viewGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#4DD0C7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#44A08D;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="viewModelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#6c7ae6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="modelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#f296fc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Shadows -->
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+
+    <filter id="textShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="12" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#2c3e50" />
+    </marker>
+
+    <marker id="arrowheadGreen" markerWidth="12" markerHeight="8" refX="12" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#27ae60" />
+    </marker>
+
+    <!-- Subtle background pattern -->
+    <pattern id="bgPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#dde6ff" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="800" fill="url(#bgGradient)"/>
+  <rect width="1000" height="800" fill="url(#bgPattern)"/>
+
+  <!-- Main Title -->
+  <text x="500" y="40" font-family="SF Pro Display, Arial, sans-serif" font-size="32" font-weight="800" text-anchor="middle" fill="#2c3e50" filter="url(#textShadow)">
+    MVVM Notes App Architecture
+  </text>
+  <text x="500" y="65" font-family="SF Pro Text, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d" opacity="0.9">
+    View–ViewModel bindings over a repository-backed model
+  </text>
+
+  <!-- View Layer -->
+  <rect x="80" y="120" width="240" height="220" rx="20" fill="url(#viewGradient)" stroke="rgba(255,255,255,0.3)" stroke-width="2" filter="url(#cardShadow)"/>
+  <text x="200" y="155" font-family="SF Pro Display, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="white" filter="url(#textShadow)">👀 VIEW LAYER</text>
+  <text x="100" y="185" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="white" opacity="0.9">User Interface Components</text>
+  <text x="100" y="205" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• Base.lproj/Main.storyboard</text>
+  <text x="100" y="225" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• ViewController.swift</text>
+  <text x="100" y="245" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• NotesListViewController.swift</text>
+  <text x="100" y="265" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• NoteDetailViewController.swift</text>
+  <text x="100" y="285" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• DesignSystem.swift</text>
+  <text x="100" y="305" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• Custom UI Components</text>
+  <text x="100" y="335" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-style="italic" fill="rgba(255,255,255,0.7)">Displays state • Captures user input</text>
+
+  <!-- ViewModel Layer -->
+  <rect x="380" y="120" width="240" height="220" rx="20" fill="url(#viewModelGradient)" stroke="rgba(255,255,255,0.3)" stroke-width="2" filter="url(#cardShadow)"/>
+  <text x="500" y="155" font-family="SF Pro Display, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="white" filter="url(#textShadow)">🧠 VIEWMODEL LAYER</text>
+  <text x="400" y="185" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="white" opacity="0.9">State • Bindings • Orchestration</text>
+  <text x="400" y="205" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• NotesListViewModel.swift</text>
+  <text x="400" y="225" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• NoteDetailViewModel.swift</text>
+  <text x="400" y="245" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• Outputs: onNotesChanged, onShowDetail</text>
+  <text x="400" y="265" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• Outputs: onSaved, onError</text>
+  <text x="400" y="285" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• Uses NotesRepository</text>
+  <text x="400" y="305" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-style="italic" fill="rgba(255,255,255,0.7)">Transforms intents → data ops • Exposes state</text>
+
+  <!-- Model Layer (includes Repository + Persistence) -->
+  <rect x="680" y="120" width="240" height="220" rx="20" fill="url(#modelGradient)" stroke="rgba(255,255,255,0.3)" stroke-width="2" filter="url(#cardShadow)"/>
+  <text x="800" y="155" font-family="SF Pro Display, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="white" filter="url(#textShadow)">🏗️ MODEL LAYER</text>
+  <text x="700" y="185" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="white" opacity="0.9">Repository • Entities • Persistence</text>
+  <text x="700" y="205" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• NotesRepository (protocol)</text>
+  <text x="700" y="225" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• CoreDataNotesRepository</text>
+  <text x="700" y="245" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• CoreDataManager.swift</text>
+  <text x="700" y="265" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• NoteEntity (Core Data)</text>
+  <text x="700" y="285" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">• Data Model Schema (.xcdatamodeld)</text>
+  <text x="700" y="305" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-style="italic" fill="rgba(255,255,255,0.7)">CRUD • Business rules • Queries</text>
+
+  <!-- Communication Arrows -->
+  <!-- View ⇄ ViewModel (bindings and events) -->
+  <line x1="320" y1="200" x2="380" y2="200" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowheadGreen)"/>
+  <line x1="380" y1="240" x2="320" y2="240" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowheadGreen)"/>
+  <rect x="330" y="170" width="60" height="30" rx="15" fill="rgba(39, 174, 96, 0.1)" stroke="#27ae60" stroke-width="1"/>
+  <text x="360" y="185" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#27ae60">Intents</text>
+  <rect x="330" y="250" width="60" height="30" rx="15" fill="rgba(39, 174, 96, 0.1)" stroke="#27ae60" stroke-width="1"/>
+  <text x="360" y="265" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#27ae60">Bindings</text>
+
+  <!-- ViewModel ⇄ Model (data operations) -->
+  <line x1="620" y1="200" x2="680" y2="200" stroke="#3498db" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <line x1="680" y1="240" x2="620" y2="240" stroke="#3498db" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <rect x="630" y="170" width="60" height="30" rx="15" fill="rgba(52, 152, 219, 0.1)" stroke="#3498db" stroke-width="1"/>
+  <text x="660" y="185" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#3498db">Requests</text>
+  <rect x="630" y="250" width="60" height="30" rx="15" fill="rgba(52, 152, 219, 0.1)" stroke="#3498db" stroke-width="1"/>
+  <text x="660" y="265" font-family="SF Pro Text, Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#3498db">Results</text>
+
+  <!-- Forbidden direct View ⇄ Model communication line -->
+  <line x1="320" y1="360" x2="680" y2="360" stroke="#e74c3c" stroke-width="3" stroke-dasharray="12,6" opacity="0.7"/>
+  <text x="500" y="350" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#e74c3c">❌ NO DIRECT COMMUNICATION</text>
+
+  <!-- Communication Rules Panel -->
+  <rect x="50" y="380" width="900" height="360" rx="25" fill="rgba(255,255,255,0.95)" stroke="rgba(52, 73, 94, 0.1)" stroke-width="2" filter="url(#cardShadow)"/>
+  <text x="500" y="420" font-family="SF Pro Display, Arial, sans-serif" font-size="28" font-weight="800" text-anchor="middle" fill="#2c3e50">MVVM Communication Rules</text>
+  <text x="500" y="445" font-family="SF Pro Text, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#7f8c8d">Understanding proper component interaction patterns</text>
+
+  <!-- Allowed Communications -->
+  <rect x="100" y="470" width="360" height="240" rx="20" fill="rgba(46, 204, 113, 0.08)" stroke="#2ecc71" stroke-width="2"/>
+  <text x="280" y="505" font-family="SF Pro Display, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#27ae60">✅ ALLOWED COMMUNICATIONS</text>
+
+  <!-- VIEW ⇄ VIEWMODEL section -->
+  <rect x="120" y="520" width="320" height="80" rx="12" fill="rgba(46, 204, 113, 0.05)" stroke="rgba(46, 204, 113, 0.2)" stroke-width="1"/>
+  <text x="130" y="540" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="#27ae60">VIEW ⇄ VIEWMODEL (Bidirectional):</text>
+  <text x="140" y="560" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• User intents (taps, text, gestures) → ViewModel</text>
+  <text x="140" y="575" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Bindings/closures for UI updates ← ViewModel</text>
+  <text x="140" y="590" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Navigation events via outputs (onShowDetail, onSaved)</text>
+
+  <!-- VIEWMODEL ⇄ MODEL/REPOSITORY section -->
+  <rect x="120" y="610" width="320" height="80" rx="12" fill="rgba(46, 204, 113, 0.05)" stroke="rgba(46, 204, 113, 0.2)" stroke-width="1"/>
+  <text x="130" y="630" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="#27ae60">VIEWMODEL ⇄ MODEL/REPO (Bidirectional):</text>
+  <text x="140" y="650" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• CRUD via NotesRepository → Core Data</text>
+  <text x="140" y="665" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Data results, validation responses ← Model/Repo</text>
+  <text x="140" y="680" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Business rules encapsulated below ViewModel</text>
+
+  <!-- Forbidden Communications -->
+  <rect x="540" y="470" width="360" height="240" rx="20" fill="rgba(231, 76, 60, 0.08)" stroke="#e74c3c" stroke-width="2"/>
+  <text x="720" y="505" font-family="SF Pro Display, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#c0392b">❌ FORBIDDEN COMMUNICATIONS</text>
+
+  <!-- VIEW ⇄ MODEL forbidden section -->
+  <rect x="560" y="520" width="320" height="80" rx="12" fill="rgba(231, 76, 60, 0.05)" stroke="rgba(231, 76, 60, 0.2)" stroke-width="1"/>
+  <text x="570" y="540" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="#c0392b">VIEW ⇄ MODEL (Direct communication):</text>
+  <text x="580" y="560" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Views must never access Core Data directly</text>
+  <text x="580" y="575" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• No CRUD from UI components</text>
+  <text x="580" y="590" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• No business logic in View layer</text>
+
+  <!-- Other violations section -->
+  <rect x="560" y="610" width="320" height="80" rx="12" fill="rgba(231, 76, 60, 0.05)" stroke="rgba(231, 76, 60, 0.2)" stroke-width="1"/>
+  <text x="570" y="630" font-family="SF Pro Text, Arial, sans-serif" font-size="14" font-weight="600" fill="#c0392b">OTHER ARCHITECTURE VIOLATIONS:</text>
+  <text x="580" y="650" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• UIKit imports or UI code in ViewModel/Model</text>
+  <text x="580" y="665" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Direct Model–View coupling or dependencies</text>
+  <text x="580" y="680" font-family="SF Pro Text, Arial, sans-serif" font-size="12" fill="#2c3e50">• Navigation performed by Model/Repository</text>
+</svg>
